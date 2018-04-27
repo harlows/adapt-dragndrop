@@ -5,7 +5,7 @@ define([
     "./jquery.ui.touch-punch"
 ], function(Adapt, QuestionView, JQueryUI, TouchPunch) {
 
-	var dragndrop = QuestionView.extend({
+	var dragndropwithimage = QuestionView.extend({
 
 		events: {
 			"dragcreate .ui-draggable": "onDragCreate",
@@ -20,7 +20,7 @@ define([
 		/************************************** SETUP METHODS **************************************/
 
 		setupQuestion: function() {
-            this.containerClass = ".dragndrop-widget";
+            this.containerClass = ".dragndropwi-widget";
             this.$scrollElement = $(window);
             this.animationTime = 300;
             this.animationDelay = 100;
@@ -44,8 +44,8 @@ define([
 
 		setupDragAndDropItems : function () {
 
-			var $draggables = this.$(".dragndrop-answer");
-			var $droppables = this.$(".dragndrop-droppable");
+			var $draggables = this.$(".dragndropwi-answer");
+			var $droppables = this.$(".dragndropwi-droppable");
 
 			$draggables.draggable({
 				containment: this.$(this.containerClass),
@@ -63,7 +63,7 @@ define([
 			}).height(hItem);
 
 			//Set widths of all drag and drop items according to the widest element
-			var $items = this.$(".dragndrop-item");
+			var $items = this.$(".dragndropwi-item");
 			var wMax = this.getMaxWidth($items);
 			$items.width(wMax);
 
@@ -124,7 +124,7 @@ define([
 		},
 
 		getDraggableByText: function(text) {
-			var draggable = _.find(this.$(".dragndrop-answer"), function(draggable) {
+			var draggable = _.find(this.$(".dragndropwi-answer"), function(draggable) {
 				var $draggable = $(draggable);
 				return $draggable.text() === text;
 			});
@@ -163,7 +163,7 @@ define([
 
 			var fromDroppable = ui.helper.data("droppable");
 			ui.helper.data("fromDroppable", fromDroppable);
-			this.$(".dragndrop-widget").addClass("dragging");
+			this.$(".dragndropwi-widget").addClass("dragging");
 			this.$currentDraggable = ui.helper;
 			this.$currentDraggable.removeClass("ui-state-placed");
 		},
@@ -213,7 +213,7 @@ define([
         },
 
 		onDragStop : function(e, ui) {
-			this.$(".dragndrop-widget").removeClass("dragging");
+			this.$(".dragndropwi-widget").removeClass("dragging");
 			this.$(".ui-state-hover").removeClass("ui-state-hover");
 
 			var fromDroppable = ui.helper.data("fromDroppable");
@@ -313,7 +313,7 @@ define([
 
 		showMarking: function() {
 			_.each(this.model.get("_items"), function(item, i) {
-				var $question = this.$(".dragndrop-question").eq(i);
+				var $question = this.$(".dragndropwi-question").eq(i);
 				$question.removeClass("correct incorrect").addClass(item._isCorrect ? "correct" : "incorrect");
 			}, this);
 		},
@@ -342,7 +342,7 @@ define([
 
 		resetQuestion: function() {
 
-			this.$(".dragndrop-question").removeClass("correct incorrect");
+			this.$(".dragndropwi-question").removeClass("correct incorrect");
 			this.$(".ui-droppable").removeClass("ui-state-disabled");
 
 			_.each(this.$(".ui-state-placed"), function(draggable) {
@@ -387,7 +387,7 @@ define([
 
 			_.each(items, function(item, i) {
 
-				var $question = this.$(".dragndrop-question").eq(i);
+				var $question = this.$(".dragndropwi-question").eq(i);
 
 				item._userAnswer.sort();
 				item.accepted.sort();
@@ -459,14 +459,14 @@ define([
 		},
 
 		disableQuestion: function() {
-			this.$(".dragndrop-answers").children().draggable("disable");
+			this.$(".dragndropwi-answers").children().draggable("disable");
 		},
 
 		enableQuestion: function() {
-			this.$(".dragndrop-answers").children().draggable("enable");
+			this.$(".dragndropwi-answers").children().draggable("enable");
 		}
 	});
 
-	Adapt.register("dragndrop", dragndrop);
+	Adapt.register("dragndropwithimage", dragndropwithimage);
 
 });
