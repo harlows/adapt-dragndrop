@@ -1,0 +1,42 @@
+<div class="dragndropwi-inner component-inner">
+    {{> component this}}
+    <div class="dragndropwi-widget component-widget {{#unless _isEnabled}} disabled {{#if _isComplete}} complete submitted user {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}">
+
+        <div class="dragndropwi-container">
+
+            <div class="dragndropwi-overlay"></div>
+
+            <div class="dragndropwi-questions">
+                {{#each _items}}
+                <div class="dragndropwi-question clearfix {{_classes}}">
+                    <div class="dragndropwi-question-state">
+                        <div class="dragndropwi-correct-icon icon icon-tick"></div>
+                        <div class="dragndropwi-incorrect-icon icon icon-cross"></div>
+                    </div>
+                    <div class="dragndropwi-question-text">{{this.text}}</div>
+                    {{#each accepted}}
+                    <div class="dragndropwi-item dragndropwi-droppable ui-state-enabled"></div>
+                    {{/each}}
+                    {{#if _graphic}}
+                        {{#if _graphic.src}}
+                            <div class="dragndropwi-item-graphic">
+                                <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}" tabindex="0">
+                            </div>
+                        {{/if}}
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="dragndropwi-answers clearfix">
+                {{#each _possibleAnswers}}
+                <div class="dragndropwi-item dragndropwi-answer">{{{this}}}</div>
+                {{/each}}
+            </div>
+
+        </div>
+
+        <div class="buttons">
+        </div>
+    </div>
+</div>
