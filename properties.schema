@@ -62,6 +62,39 @@
                             "help": "Enter all the correct values for this object",
                             "translatable": true
                         }
+                    },
+                    "_graphic": {
+                        "type": "object",
+                        "required": false,
+                        "title": "Graphic",
+                        "properties":{
+                            "alt": {
+                                "type": "string",
+                                "required": false,
+                                "default": "",
+                                "inputType": "Text",
+                                "validators": [],
+                                "help": "The alternative text for this image",
+                                "translatable": true
+                            },
+                            "src": {
+                                "type": "string",
+                                "required": false,
+                                "default": "",
+                                "inputType": "Asset:image",
+                                "validators": [],
+                                "help": "Optional image which will be rendered with the item block."
+                            }
+                        }
+                    },
+                    "_classes": {
+                        "type":"string",
+                        "required": false,
+                        "default": "",
+                        "title": "Classes",
+                        "inputType": "Text",
+                        "validators": [],
+                        "help": "Classes that are applied to the drag and drop Item"
                     }
                 }
             }
