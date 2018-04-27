@@ -1,57 +1,64 @@
-.dragndrop-inner {
+.dragndropwi-inner {
 
     position: relative;
 
-    .dragndrop-container {
+    .dragndropwi-container {
     }
 
-    .dragndrop-overlay {
+    .dragndropwi-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: #000;
+        background: #fff;
         opacity: 0;
         transition: opacity 200ms;
     }
 
-    .dragndrop-widget.dragging .dragndrop-overlay {
+    .dragndropwi-widget.dragging .dragndropwi-overlay {
         z-index: 10;
-        opacity: 0.4;
+        opacity: 0.5;
     }
 
-    .buttons, .dragndrop-item {
+    .buttons, .dragndropwi-item {
         z-index: 11;
     }
 
-    .dragndrop-questions {
+    .dragndropwi-questions {
         margin-bottom: 20px;
     }
 
-    .dragndrop-question {
+    .dragndropwi-question {
         position: relative;
         padding: 20px;
         margin-bottom: 2px;
         background: @primary-color;
         color: @primary-color-inverted;
         text-align: justify;
-
-        .dragndrop-question-text {
+        
+        .dragndropwi-question-text {
             font-size: @body-text-font-size;
             margin-bottom: 20px;
+        }
+        
+        .dragndropwi-item-graphic {
+            float: right;
+            width: 200px;
         }
 
         .ui-droppable {
             display: inline-block;
             position: relative;
-            border: 1px dotted;
+            border: 2px dotted;
             border-color: @primary-color-inverted;
             vertical-align: middle;
+            border-radius: 5px;
         }
 
         .ui-droppable.ui-state-active {
-            background-color: @primary-color;
+            background-color: @brand-primary;
+            box-shadow: inset 0px 0px 5px rgba(0,0,0,.2);
         }
 
         .ui-droppable.ui-state-enabled.ui-state-hover {
@@ -63,7 +70,7 @@
             z-index: 8;
         }
 
-        .dragndrop-question-state {
+        .dragndropwi-question-state {
             float: right;
 
             .icon {
@@ -73,21 +80,23 @@
         }
     }
 
-    .dragndrop-answers {
+    .dragndropwi-answers {
 
-        .dragndrop-answer {
+        .dragndropwi-answer {
             float: left;
-            background: #ddd;
-            border: 1px solid transparent;
+            background: @dark-grey;
+            color: @primary-color-inverted;
+            border: 2px solid transparent;
             text-align: center;
-            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
             cursor: move;
 
             &.ui-draggable-disabled {
                 cursor: default;
             }
             &.ui-draggable-dragging {
-                box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.5);
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
                 z-index: 12;
             }
             &.ui-state-placed {
@@ -106,7 +115,7 @@
         }
     }
 
-    .dragndrop-item {
+    .dragndropwi-item {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -120,8 +129,8 @@
     }
 }
 
-.dragndrop-widget.show-user-answer {
-    .dragndrop-question {
+.dragndropwi-widget.show-user-answer {
+    .dragndropwi-question {
         &.correct .icon-tick {
             display: block;
         }
@@ -131,7 +140,7 @@
     }
 }
 
-.dragndrop-transition-0 {
+.dragndropwi-transition-0 {
     -webkit-transition: 0s;
     -moz-transition: 0s;
     -ms-transition: 0s;
@@ -139,7 +148,7 @@
     transition: 0s;
 }
 
-.dragndrop-transition-200 {
+.dragndropwi-transition-200 {
     -webkit-transition: top 0.2s, left 0.2s;
     -moz-transition: top 0.2s, left 0.2s;
     -ms-transition: top 0.2s, left 0.2s;
@@ -147,7 +156,7 @@
     transition: top 0.2s, left 0.2s;
 }
 
-.dragndrop-transition-600 {
+.dragndropwi-transition-600 {
     -webkit-transition: top 0.6s, left 0.6s;
     -moz-transition: top 0.6s, left 0.6s;
     -ms-transition: top 0.6s, left 0.6s;
